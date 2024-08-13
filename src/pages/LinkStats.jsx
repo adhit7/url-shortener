@@ -41,7 +41,7 @@ const LinkStats = () => {
   };
 
   const getStats = async () => {
-    setLoading(true);
+    setLoadingStats(true);
     try {
       const { data } = await api.get(`/click/url/count/${url._id}`);
       setStats(data);
@@ -53,7 +53,7 @@ const LinkStats = () => {
         title: errorMessage,
       });
     } finally {
-      setLoading(false);
+      setLoadingStats(false);
     }
   };
 

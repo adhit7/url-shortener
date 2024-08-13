@@ -63,7 +63,7 @@ const Dashboard = () => {
 
   const deleteLink = async (id) => {
     try {
-      deleteUrl(setLoading, id);
+      await deleteUrl(setLoading, id);
       setRefresh((prev) => !prev);
     } catch (error) {
       console.log(error);
