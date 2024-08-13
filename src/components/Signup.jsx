@@ -1,4 +1,3 @@
-import * as Yup from 'yup';
 import React, { useState } from 'react';
 import {
   Card,
