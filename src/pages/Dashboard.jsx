@@ -99,15 +99,20 @@ const Dashboard = () => {
         <h2 className='text-3xl font-extrabold'>My Links</h2>
         <CreateLink />
       </div>
-      {urls?.length > 0 ? (
-        urls.map((url, i) => (
-          <LinkCard key={i} url={url} loading={loading} deleteFn={deleteLink} />
-        ))
-      ) : (
-        <div className='flex justify-center p-3'>
-          <Lottie animationData={noDataFound} loop={true} />
-        </div>
-      )}
+      {urls?.length > 0
+        ? urls.map((url, i) => (
+            <LinkCard
+              key={i}
+              url={url}
+              loading={loading}
+              deleteFn={deleteLink}
+            />
+          ))
+        : !loading && (
+            <div className='flex justify-center p-3'>
+              <Lottie animationData={noDataFound} loop={true} />
+            </div>
+          )}
     </div>
   );
 };
