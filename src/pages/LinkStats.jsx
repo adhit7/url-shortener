@@ -16,7 +16,7 @@ import { useCurrentUserContext } from '@/context/CurrentUserContext';
 const LinkStats = () => {
   const { id } = useParams();
   const [url, setUrl] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [loadingStats, setLoadingStats] = useState(false);
   const [stats, setStats] = useState([]);
   const { toast } = useToast();
@@ -138,7 +138,7 @@ const LinkStats = () => {
             <CardHeader>
               <CardTitle className='text-4xl font-extrabold'>Stats</CardTitle>
             </CardHeader>
-            {stats && stats.length ? (
+            {stats.length > 0 ? (
               <CardContent className='flex flex-col gap-6'>
                 <Card>
                   <CardHeader>
@@ -156,7 +156,9 @@ const LinkStats = () => {
               </CardContent>
             ) : (
               <CardContent className='h-2/3 flex flex-col justify-center items-center'>
-                {loadingStats === false ? (
+                {stats?.length === 0 &&
+                loadingStats === false &&
+                loading === false ? (
                   <>
                     <Lottie animationData={noDataFound} loop={true} />
                     <h2 className='text-center text-3xl font-bold mt-3'>
