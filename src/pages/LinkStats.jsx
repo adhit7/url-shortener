@@ -60,7 +60,7 @@ const LinkStats = () => {
   const deleteLink = (id) => {
     try {
       deleteUrl(setLoadingStats, id);
-      navigate('/dashboard');
+      navigate('/dashboard', { state: { refresh: true } });
     } catch (error) {
       console.log(error);
     }
@@ -73,7 +73,7 @@ const LinkStats = () => {
   }, []);
 
   useEffect(() => {
-    if (url?._id) {
+    if (url?.originalUrl) {
       getStats();
     }
   }, [url]);

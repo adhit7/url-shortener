@@ -13,6 +13,7 @@ import { BarLoader } from 'react-spinners';
 import { useToast } from '@/components/ui/use-toast';
 import noDataFound from '../assets/lottie/noDataFound.json';
 import Lottie from 'lottie-react';
+import { useLocation } from 'react-router-dom';
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
@@ -20,6 +21,7 @@ const Dashboard = () => {
   const [lastMonthCount, setLastMonthCount] = useState(0);
   const [refresh, setRefresh] = useState(false);
   const { user, deleteUrl } = useCurrentUserContext();
+  const location = useLocation();
   const { toast } = useToast();
 
   const getCount = (urlList) => {
@@ -72,7 +74,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     getUrls();
-  }, [refresh]);
+  }, [refresh, location.state]);
 
   return (
     <div className='flex flex-col gap-8'>
@@ -99,7 +101,7 @@ const Dashboard = () => {
         <h2 className='text-3xl font-extrabold'>My Links</h2>
         <CreateLink />
       </div>
-      {urls?.length > 0
+      {!loading && urls?.length > 0
         ? urls.map((url, i) => (
             <LinkCard
               key={i}
