@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const INTERNAL_SERVER_ERROR = 'Something went wrong, please try again later.';
 const api = axios.create({
-  baseURL: 'https://trimmr.up.railway.app',
+  baseURL: 'https://urlshortener-backend-production-67ed.up.railway.app',
   headers: {
     'Content-Type': 'application/json',
   },
